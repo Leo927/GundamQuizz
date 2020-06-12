@@ -36,7 +36,7 @@ var questions =[
 		,2),
 	Question.create("Which of the following MS did Amulo pilot", 
 		["NT-1", "RX-78", "MS-06", "v"]
-		,2),
+		,3),
 	Question.create("What is the box of laplas", 
 		["a person", "a mobile suit", "original constitute"]
 		,2),
@@ -89,18 +89,20 @@ function handleSubmit(){
 		alert("Must select an answer");
 		return;
 	}
-	if($("input[name='answer']:checked").val()== quiz.getCurrentProblem().answer)
+
+	var selected= $("input[name='answer']:checked").val();
+
+	if(selected== quiz.getCurrentProblem().answer)
 	{
 		quiz.correct += 1;
-		console.log("answer is correct. "+quiz.correct);
 	}
 	else
 	{
-		console.log("answer is wrong");
+		$("#answer-"+selected).parent().toggleClass("bg-danger");
 	}
+	$("#answer-"+quiz.getCurrentProblem().answer).parent().toggleClass("bg-success");
 	quiz.currentProblem++;
 	$(".progress-bar").css("width",  quiz.currentProblem/quiz.questions.length*100 +  "%");
-	console.log(quiz.currentProblem/quiz.questions.length +  "%");
 	$("#button-submit").hide();
 	$("#button-next").show();
 	$("#score-correct").text(quiz.correct);
