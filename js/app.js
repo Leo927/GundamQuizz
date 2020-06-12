@@ -37,11 +37,29 @@ var questions =[
 	Question.create("Which of the following MS did Amulo pilot", 
 		["NT-1", "RX-78", "MS-06", "v"]
 		,3),
-	Question.create("What is the box of laplas", 
-		["a person", "a mobile suit", "original constitute"]
+	Question.create("What is the box of Laplas?", 
+		["a person", "a mobile suit", "the original constitution"]
 		,2),
-	Question.create("What is the model number of the original gundam", 
-		["RT-06", "RX-78", "RX-78-2"]
+	Question.create("Which part of a MS is the less useful?", 
+		["Leg", "Body", "Head"]
+		,0),
+	Question.create("What did Zeon drop on to Australia?", 
+		["A ship", "A colony", "A comet"]
+		,1),
+	Question.create("What is the power output of the RX-0", 
+		["2864 kW", "4520 kW", "3480 kW"]
+		,2),
+	Question.create("What is the sepcial system used by RX-0", 
+		["Zero System", "Blue Destiney", "NT-D"]
+		,2),
+	Question.create("Which is the first mass produced MS?", 
+		["AMX-004 Qubeley", "MS-06 Zaku-II", "MS-06 Zaku-I"]
+		,1),
+	Question.create("真红闪电指的是谁", 
+		["阿姆罗 雷", "强尼 莱丁", "夏亚 阿兹纳布卢"]
+		,1),
+	Question.create("白狼指的是谁", 
+		["阿姆罗 雷", "阿纳贝尔·卡多", "松永真"]
 		,2),
 ]
 
@@ -76,8 +94,8 @@ function populateQuestion(question){
 	$("#question").text(question.question);
 	$("#choices").text("");
 	for (var i = 0 ; i < question.choices.length; i++) {
-		$("#choices").append(`<div id="question">
-						<input type="radio" class="form-check-input " name="answer" id="answer-`+i+`" value="`+i+`">
+		$("#choices").append(`<div id="question" class ="m-1">
+						<input type="radio" class="form-check-input" name="answer" id="answer-`+i+`" value="`+i+`">
 						<label class="form-check-label" for="answer-`+i+`">`+question.choices[i]+`</label>
 					</div>`);
 	}
@@ -98,9 +116,9 @@ function handleSubmit(){
 	}
 	else
 	{
-		$("#answer-"+selected).parent().toggleClass("bg-danger");
+		$("#answer-"+selected).parent().toggleClass("border border-danger");
 	}
-	$("#answer-"+quiz.getCurrentProblem().answer).parent().toggleClass("bg-success");
+	$("#answer-"+quiz.getCurrentProblem().answer).parent().toggleClass("border border-success");
 	quiz.currentProblem++;
 	$(".progress-bar").css("width",  quiz.currentProblem/quiz.questions.length*100 +  "%");
 	$("#button-submit").hide();
