@@ -45,12 +45,14 @@
 			<button id="btn-restart" onclick="startNewQuiz()" class="btn btn-outline-primary col-8">Play Again</button>
 			<button id="btn-start" class="btn btn-outline-primary col-6" onclick="startNewQuiz()">Start</button>
 		</div>
-		<div>
+		<div class="d-block position-relative">
 			<div class="progress">
-				<div class="progress-bar d-inline-block" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+				<div class="progress-bar d-block" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+				</div>
+				<div style="left:48%" class="d-block mx-auto position-absolute ">
 					<span id="answeredQuestionNumber"></span>/<span id="totalQuestionNumber"></span>
 				</div>
-			</div>
+			</div>			
 		</div>
 		
 	</div>
